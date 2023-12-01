@@ -35,12 +35,12 @@
 * サインアップ
 * ログイン/ログアウト
   * モーダルウィンドウによるログイン
-* 設定機能
-  * 学校名の編集
-  * チャイム音の変更
-  * BGMの変更
-  * 背景の変更
-    * ImageMagick・RMagickによるモザイク率の変更
 * 時間割機能
   * 各セクション(HR、授業、休み時間、etc.)の長さの編集
   * 各セクションの表示文字列の編集
+  * セクション中のBGMの変更
+  * セクション中の背景の変更
+    * ImageMagick・RMagickによるモザイク率の変更
+
+## 画面遷移図
+URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=ZT1US2NemiZn9nkJ-1
