@@ -44,3 +44,6 @@
 
 ## 画面遷移図
 URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=ZT1US2NemiZn9nkJ-1
+
+## ER図
+![Alt text](README_er_figure.png)
