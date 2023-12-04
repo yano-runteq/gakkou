@@ -47,3 +47,25 @@ URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9
 
 ## ER図
 ![Alt text](README_er_figure.png)
+
+### 各テーブルとその主要カラムの役割
+* usersテーブル
+：ユーザーを管理する。
+  * student_identificationカラム
+  ：ユーザーの"学籍ID"を収納する。主キーや外部キーの名称(xx_id)と区別するためこの名称に。
+* timetablesテーブル
+：各ユーザーの時間割を管理する。一ユーザーにつき時間割の設定情報は一つのため、users:timetablesは1:1に。
+* sectionsテーブル
+：時間割の各セクション(1時間目, 休み時間, etc.)を管理する。
+  * nameカラム
+  ：セクション名を収納する。
+  * start_timeカラム end_timeカラム
+  ：それぞれセクションの開始時刻と終了時刻を収納する。
+  * chime_onoffカラム
+  ：そのセクションにおいてチャイムは鳴らすかどうかのフラグを収納する。
+  * backgroundカラム
+  ：そのセクション時に読み込む画像ファイル(背景用)のパスを収納する。
+  * background_mosaic_onoffカラム
+  ：そのセクションにおいて背景ファイルにモザイクをかけるかどうかのフラグを収納する。
+  * bgmカラム
+  ：そのセクション時に読み込む音声ファイル(BGM用)のパスを収納する。
