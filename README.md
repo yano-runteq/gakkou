@@ -27,20 +27,20 @@
     * ImageMagick・RMagickによるモザイク加工
   * BGMの時間変化
   * 表示(HR、授業中、休み時間、放課後、etc.)の時間変化
-  * 夜間学校モード
-* 概要・コンセプト
+* 概要・使い方
 * 音量調節
 
 ### その後の機能
 * サインアップ
 * ログイン/ログアウト
   * モーダルウィンドウによるログイン
-* 設定機能
-  * 学校名の編集
-  * チャイム音の変更
-  * BGMの変更
-  * 背景の変更
-    * ImageMagick・RMagickによるモザイク率の変更
 * 時間割機能
   * 各セクション(HR、授業、休み時間、etc.)の長さの編集
   * 各セクションの表示文字列の編集
+  * 各セクションのチャイムのon/off
+  * 各セクションの背景の変更
+  * 各セクションのBGMの変更
+  * 各セクションの背景のモザイク化のon/off
+
+## 画面遷移図
+URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=ZT1US2NemiZn9nkJ-1
