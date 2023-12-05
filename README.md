@@ -46,7 +46,7 @@
 URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=ZT1US2NemiZn9nkJ-1
 
 ## ER図
-![Alt text](README_er_figure.png)
+![Alt text](gakkou_er_figure.png)
 
 ### 各テーブルとその主要カラムの役割
 * usersテーブル
@@ -61,11 +61,11 @@ URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9
   ：セクション名を収納する。
   * start_timeカラム end_timeカラム
   ：それぞれセクションの開始時刻と終了時刻を収納する。
-  * chime_onoffカラム
+  * chime_enabledカラム
   ：そのセクションにおいてチャイムは鳴らすかどうかのフラグを収納する。
   * backgroundカラム
   ：そのセクション時に読み込む画像ファイル(背景用)のパスを収納する。
-  * background_mosaic_onoffカラム
+  * background_mosaic_enabledカラム
   ：そのセクションにおいて背景ファイルにモザイクをかけるかどうかのフラグを収納する。
   * bgmカラム
   ：そのセクション時に読み込む音声ファイル(BGM用)のパスを収納する。
