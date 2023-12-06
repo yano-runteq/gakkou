@@ -44,3 +44,28 @@
 
 ## 画面遷移図
 URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&mode=design&t=ZT1US2NemiZn9nkJ-1
+
+## ER図
+![Alt text](gakkou_er_figure.png)
+
+### 各テーブルとその主要カラムの役割
+* usersテーブル
+：ユーザーを管理する。
+  * student_identificationカラム
+  ：ユーザーの"学籍ID"を格納する。主キーや外部キーの名称(xx_id)と区別するためこの名称に。
+* timetablesテーブル
+：各ユーザーの時間割を管理する。一ユーザーにつき時間割の設定情報は一つのため、users:timetablesは1:1に。
+  * background_mosaic_enabledカラム
+  ：背景ファイルにモザイクをかけるかどうかのフラグを格納する。
+* sectionsテーブル
+：時間割の各セクション(1時間目, 休み時間, etc.)を管理する。
+  * nameカラム
+  ：セクション名を格納する。
+  * start_timeカラム end_timeカラム
+  ：それぞれセクションの開始時刻と終了時刻を格納する。
+  * chime_enabledカラム
+  ：そのセクションにおいてチャイムを鳴らすかどうかのフラグを格納する。
+  * backgroundカラム
+  ：そのセクション時に読み込む画像ファイル(背景用)のパスを格納する。
+  * bgmカラム
+  ：そのセクション時に読み込む音声ファイル(BGM用)のパスを格納する。
