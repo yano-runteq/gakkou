@@ -69,3 +69,18 @@ URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9
   ：そのセクション時に読み込む画像ファイル(背景用)のパスを格納する。
   * bgmカラム
   ：そのセクション時に読み込む音声ファイル(BGM用)のパスを格納する。
+
+## 技術選定
+■ 開発環境: Docker
+■ サーバサイド: Ruby on Rails 7系
+　　Ruby 3.2.2 Rails 7.0.8
+■ フロントエンド: ?
+■ CSSフレームワーク: bootstrap5系
+■ インフラ:
+・ Webアプリケーションサーバ: Railway
+・ ファイルサーバ: ?
+・ セッションサーバ: Redis（Redis by Upstash）
+・ データベースサーバ: MySQL
+■ その他：
+・ VCS: GitHub
+・ CI/CD: GitHubActions
