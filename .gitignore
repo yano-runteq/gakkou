@@ -30,5 +30,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore docker
-docker-compose.yml
+# Ignore docker-compose
+/docker-compose.yml
