@@ -1,5 +1,5 @@
 class Timetable < ApplicationRecord
   belongs_to :user
 
-  has_many :section, dependent: :destroy
+  has_many :sections, dependent: :destroy
 end
