@@ -1,2 +1,6 @@
 <h1>Tops#top</h1>
-<p>Find me in app/views/tops/top.html.erb</p>
+<p id="jsclock">※ここに時計が表示されます。</p>
+
+<% content_for :js do %>
+  <%= javascript_import_module_tag "top" %>
+<% end %>
