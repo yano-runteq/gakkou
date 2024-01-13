@@ -51,7 +51,10 @@ gem "sassc-rails"
 # 2024/01/03
 gem "bootstrap", "~> 5.3.0"
 gem "sorcery"
-gem "rmagick"
+
+# 2024/01/13
+gem "carrierwave", "~> 3.0"
+gem "mini_magick"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
