@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  background_mosaic_enabled: false
+  user: one
+
+two:
+  background_mosaic_enabled: false
+  user: two

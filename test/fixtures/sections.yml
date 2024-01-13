@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_time: 2024-01-14 06:57:13
+  end_time: 2024-01-14 06:57:13
+  chime_enabled: false
+  background: MyString
+  bgm: MyString
+  timetable: one
+
+two:
+  name: MyString
+  start_time: 2024-01-14 06:57:13
+  end_time: 2024-01-14 06:57:13
+  chime_enabled: false
+  background: MyString
+  bgm: MyString
+  timetable: two
