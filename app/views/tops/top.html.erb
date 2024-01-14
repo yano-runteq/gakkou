@@ -1,5 +1,6 @@
 <h1>Tops#top</h1>
 <p id="jsclock">※ここに時計が表示されます。</p>
+<p id="jscurrentsection" data-sections=<%= @sections.to_json %>>※ここに現在のセクションが表示されます。</p>
 
 <% content_for :js do %>
   <%= javascript_import_module_tag "top" %>
