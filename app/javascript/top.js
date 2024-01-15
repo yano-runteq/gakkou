@@ -38,8 +38,7 @@ function updateClock() {
 
 // 現在のセクションを更新(表示)する関数
 const sectionElement = document.getElementById("jscurrentsection");
-const sections = JSON.parse(sectionElement.dataset.sections);
-
+const sections = JSON.parse(sectionElement.dataset.sections).sort((a, b) => a.start_time.localeCompare(b.start_time));
 function updateCurrentSection(){
   // 現在のセクションを取得（start_time以上-end_time未満の範囲に現在時刻のあるセクション）
   const nowDataTime = whatTime("dataTime");
@@ -48,11 +47,31 @@ function updateCurrentSection(){
     section.start_time.split("T")[1].substring(0, 8) <= nowDataTime && section.end_time.split("T")[1].substring(0, 8) > nowDataTime
   );
 
-  sectionElement.textContent = `name: ${currentSection.name}, start_time: ${currentSection.start_time}, end_time: ${currentSection.end_time}`
+  if (currentSection) {
+    // 現在のセクションの情報を表示する
+    sectionElement.textContent = `name: ${currentSection.name}, start_time: ${currentSection.start_time}, end_time: ${currentSection.end_time}`
+  } else {
+    // 現在時刻に対応するセクションのなかった場合、直近の次のセクションを取得しその情報を表示する
+    const nextSection = obtainNextSection();
+    sectionElement.textContent = `name: -, next_start_time: ${nextSection.start_time}`
+  };
 
   setTimeout(updateCurrentSection, 1000);
 }
 
-// 時計を開始
+// 直近の次のセクションを取得する関数
+function obtainNextSection() {
+  const nowDataTime = whatTime("dataTime");
+  var nextSection = sections.find((section) =>
+    section.start_time.split("T")[1].substring(0, 8) > nowDataTime
+  )
+  if (nextSection) {
+    return nextSection
+  } else {
+    var nextSection = sections[0]
+    return nextSection
+  };
+}
+
 updateClock();
 updateCurrentSection();
