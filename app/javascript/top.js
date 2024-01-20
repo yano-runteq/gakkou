@@ -1,9 +1,17 @@
+// カレントユーザのまたはデフォルトのセクションを開始時刻順に取得する
+const sectionElement = document.getElementById("jscurrentsection");
+const sections = JSON.parse(sectionElement.dataset.sections).sort((a, b) => a.start_time.localeCompare(b.start_time));
+
+// チャイムを鳴らす時刻を取得する
+const chimeEnabledSections = sections.filter((section) => section.chime_enabled == true);
+const chimeTimes = [].concat(...chimeEnabledSections.map((section)=>[section.start_time, section.end_time]));
+
 // 現在時刻(hh:mm:ss)を取得する関数
-// 表示するために取得する場合はdisplayTime、単に値として取得したい場合はdataTimeを引数に渡す。
-function whatTime(which) {
+/// 表示するために取得する場合はdisplayTime、単に値として取得したい場合はdataTimeを引数に渡す。
+function obtainTime(which) {
   const now = new Date();
 
-  // 時、分、秒を0埋めして取得
+  /// 時、分、秒を0埋めして取得
   const hours = now.getHours().toString().padStart(2, "0");
   const minutes = now.getMinutes().toString().padStart(2, "0");
   const seconds = now.getSeconds().toString().padStart(2, "0");
@@ -14,58 +22,65 @@ function whatTime(which) {
   if (which === "displayTime") {
   return displayTime;
   }
-  
+
   if (which === "dataTime") {
   return dataTime;
   } 
 }
 
-
-// 時計を更新(表示)する関数
-function updateClock() {
+// 時計の表示を更新する関数
+function updateDisplayClock() {
   const clockElement = document.getElementById("jsclock");
 
-  clockElement.textContent = whatTime("displayTime");
+  clockElement.textContent = obtainTime("displayTime");
 
-  setTimeout(updateClock, 1000);
+  setTimeout(updateDisplayClock, 1000);
 }
 
-
-const sectionElement = document.getElementById("jscurrentsection");
-const sections = JSON.parse(sectionElement.dataset.sections).sort((a, b) => a.start_time.localeCompare(b.start_time));
-
-// 現在のセクションを更新(表示)する関数
-function updateCurrentSection(){
-  const nowDataTime = whatTime("dataTime");
+// 現在のセクションを取得する関数
+function obtainCurrentSection(){
+  const nowDataTime = obtainTime("dataTime");
   const currentSection = sections.find((section) => 
     section.start_time <= nowDataTime && section.end_time > nowDataTime
   );
-
-  // 現在のセクションの情報を表示する / 現在時刻に対応するセクションのなかった場合、直近の次のセクションの情報を表示する
-  if (currentSection) {
-    // 現在のセクションの情報を表示する
-    sectionElement.textContent = `name: ${currentSection.name}, start_time: ${currentSection.start_time}, end_time: ${currentSection.end_time}`
-  } else {
-    const nextSection = obtainNextSection();
-    sectionElement.textContent = `name: -, next_start_time: ${nextSection.start_time}, next_section: ${nextSection.name}`
-  };
-
-  setTimeout(updateCurrentSection, 1000);
+  return currentSection;
 }
 
 // 直近の次のセクションを取得する関数
 function obtainNextSection() {
-  const nowDataTime = whatTime("dataTime");
-  var nextSection = sections.find((section) => section.start_time > nowDataTime);
-
-  if (nextSection) {
-    return nextSection
-  } else {
-    var nextSection = sections[0]
-    return nextSection
-  };
+  const nowDataTime = obtainTime("dataTime");
+  const nextSection = sections.find((section) => section.start_time > nowDataTime) || sections[0];
+  return nextSection;
 }
 
+// セクションの表示を更新する関数
+function updateDisplaySection(){
+  const currentSection = obtainCurrentSection()
+  if (currentSection) {
+    sectionElement.textContent = `name: ${currentSection.name}, start_time: ${currentSection.start_time.substring(0,5)}, end_time: ${currentSection.end_time.substring(0,5)}`;
+  } else {
+    const nextSection = obtainNextSection();
+    /// start_timeの時と分だけ取得したいけどいい関数が思いつかないので妥協
+    sectionElement.textContent = `name: -, next_start_time: ${nextSection.start_time.substring(0,5)}`;
+  }
 
-updateClock();
-updateCurrentSection();
+  setTimeout(updateDisplaySection, 1000);
+}
+
+// チャイムを鳴らす関数
+/// chime_enabledがtrueのセクションのstart_time時とend_time時にチャイムを鳴らす
+function playChime(){
+  const chime = new Audio("/assets/Japanese_School_Bell02-01(Slow-Long).mp3");
+  const nowDataTime = obtainTime("dataTime");
+
+  /// "チャイムを鳴らす時刻"の中に現在時刻があるかどうかチェック
+  const isMatch = chimeTimes.find((chimeTime) => chimeTime == nowDataTime);
+
+  if (isMatch) { chime.play(); };
+
+  setTimeout(playChime, 1000);
+}
+
+updateDisplayClock();
+updateDisplaySection();
+playChime();
