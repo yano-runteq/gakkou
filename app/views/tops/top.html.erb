@@ -2,6 +2,17 @@
 <p id="jsclock">※ここに時計が表示されます。</p>
 <p id="jscurrentsection" data-sections=<%= @sections.to_json %>>※ここに現在のセクションが表示されます。</p>
 
+<div class="controls">
+  <label for="bgmvolume">bgm_vol</label>
+  <input type="range" name="bgmvolume" id="bgmvolume" min="0.0" max="1.0" value="0.5" step="0.05">
+  <label for="chimevolume">chime_vol</label>
+  <input type="range" name="chimevolume" id="chimevolume" min="0.0" max="1.0" value="0.5" step="0.05">
+  </div>
+
+<audio id="bgm">
+    Your browser does not support the audio tag.
+</audio>
+
 <% content_for :js do %>
   <%= javascript_import_module_tag "top" %>
 <% end %>
