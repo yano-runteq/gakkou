@@ -204,7 +204,7 @@ function playBgm() {
   const loopPlay = function(){
     bgm.play();
     bgm.currentTime = 0;
-    setTimeout(loopPlay, bgm.duration*1000-10);
+    setTimeout(loopPlay, bgm.duration*1000);
   };
 
   /// あるいは、BGM最後、数ミリ秒削除？
