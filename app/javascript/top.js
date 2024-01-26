@@ -105,7 +105,7 @@ async function playChime(){
 
 // 音声をフェードインしながら再生する関数
 function fadeIn(audio, milliSeconds) {
-  ///　フェードアウト中、BGMの音量調節を無効にする
+  ///　フェードイン中、BGMの音量調節を無効にする
   temporaryEnabled = true;
 
   /// フェードイン完了時の音量値を取得
