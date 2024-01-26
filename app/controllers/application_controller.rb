@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
       name:"また明日",start_time:"18:30:00",end_time:"21:00:00",chime_enabled:false
     },
     {
-      name:"夜",start_time:"21:00:00",end_time:"23:59:59",chime_enabled:true
+      name:"夜",start_time:"21:00:00",end_time:"23:59:59",chime_enabled:false
     }]
   end
 end
