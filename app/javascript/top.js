@@ -7,10 +7,6 @@ let latestBgmVolume;
 const sectionElement = document.getElementById("jscurrentsection");
 const sections = JSON.parse(sectionElement.dataset.sections).sort((a, b) => a.start_time.localeCompare(b.start_time));
 
-// チャイムを鳴らす時刻を取得する
-const chimeEnabledSections = sections.filter((section) => section.chime_enabled == true);
-const chimeTimes = [].concat(...chimeEnabledSections.map((section)=>[section.start_time, section.end_time]));
-
 // チャイムの音
 const chime = new Audio("/assets/Japanese_School_Bell02-01(Slow-Long).mp3");
 const inputChimeVolume = document.getElementById("chimevolume");
