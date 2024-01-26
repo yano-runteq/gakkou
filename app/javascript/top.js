@@ -192,13 +192,11 @@ inputChimeVolume.addEventListener("input", (e) => {
 
 // クリック時(音量確認に返答後)、BGMを鳴らす
 let checkClicked = false; /// クリック時にBGMを鳴らすのは最初の一度だけにする。でないと、fadeOut終了かつチャイムの鳴っているあいだにクリックすると、音量スライダーによる音量調節(すなわちBGMの可聴化)が可能になってしまう。
-if (!bgm.paused) { checkClicked = true; } /// 画面遷移後にBGMが正常に鳴っている場合、クリックによる再生を無効にする。
 document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener("click", function() {
     if (checkClicked) { return; }
     if (bgm.paused) {
       playBgm();
-      checkClicked = true;
     }
   });
 });
@@ -218,6 +216,7 @@ function playBgm() {
 
   loopPlay();
   fadeIn(bgm, 2000);
+  checkClicked = true; /// BGMを一度でも再生した場合、以降 クリックしてBGMを再生する機能を停止する。
 }
 
 // 本アプリの他ページからtopページに画面遷移時、BGMを鳴らす
