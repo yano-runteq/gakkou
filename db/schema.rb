@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_13_215713) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_30_220120) do
   create_table "sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.boolean "chime_enabled", default: false
-    t.string "background"
+    t.string "background_image"
     t.string "bgm"
     t.bigint "timetable_id", null: false
     t.datetime "created_at", null: false
