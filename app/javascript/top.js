@@ -59,9 +59,9 @@ inputChimeVolume.addEventListener("input", (e) => {
 function setCurrentBgm() {
   let bgmPath;
   if (currentSection) {
-    bgmPath = (currentSection.bgm) ? `/assets/${currentSection.bgm}` : "/assets/VSQSE_0586_city_bird(loop)2.mp3";
+    bgmPath = (currentSection.bgm) ? `/assets/${currentSection.bgm}` : "/assets/00_default_music(cut).mp3";
   } else {
-    bgmPath = "/assets/VSQSE_0586_city_bird(loop)2.mp3";
+    bgmPath = "/assets/00_default_music(cut).mp3";
   }
   return new Audio(bgmPath);
 }
@@ -173,9 +173,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const currentBgmPath = bgm.src;
     let nextBgm;
     if (currentSection) {
-      nextBgm = (currentSection.bgm) ? new Audio(`/assets/${currentSection.bgm}`) : new Audio("/assets/VSQSE_0586_city_bird(loop)2.mp3");
+      nextBgm = (currentSection.bgm) ? new Audio(`/assets/${currentSection.bgm}`) : new Audio("/assets/00_default_music(cut).mp3");
     } else {
-      nextBgm = new Audio("/assets/VSQSE_0586_city_bird(loop)2.mp3");
+      nextBgm = new Audio("/assets/00_default_music(cut).mp3");
     }
     const nextBgmPath = nextBgm.src;
 
