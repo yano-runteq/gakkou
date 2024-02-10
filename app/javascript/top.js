@@ -119,10 +119,16 @@ function startLoopBgm() {
 }
 
   // 関数：BGMをループ再生
+  let loopPlayTimer;
   function loopPlay() {
     bgm.play();
     bgm.currentTime = 0;
-    setTimeout(loopPlay, bgm.duration*1000)
+    loopPlayTimer = setTimeout(loopPlay, bgm.duration*1000);
+  }
+
+  // 関数：BGMのループ再生を停止
+  function stopLoopBgm() {
+    clearTimeout(loopPlayTimer);
   }
 
 /*
@@ -191,10 +197,12 @@ document.addEventListener("DOMContentLoaded", function() {
       await playChime();
       await sleep(2000);
             temporaryEnabled = false;
+            stopLoopBgm();
             startLoopBgm(); /// BGMをセットしなおし再生
     } else if (isMatchStartOrEndTimes && (currentBgmPath !== nextBgmPath)) {
       await fadeOutBgm();
             changeBackgroundImage();
+            stopLoopBgm();
             startLoopBgm();
     } else if (isMatchStartOrEndTimes) {
             changeBackgroundImage();
