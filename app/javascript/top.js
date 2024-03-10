@@ -1,5 +1,6 @@
 /*
 - 汎用変数/汎用関数
+- その他の処理
 - assets関連
 - start-up関数群
 - everySecondに関する関数群
@@ -12,8 +13,8 @@
 
 /* -----------    汎用変数/汎用関数    ----------- */
 // 適用中のtimetableのsections（開始時刻順）
-const sectionElement = document.getElementById("jscurrentsection");
-const sections = JSON.parse(sectionElement.dataset.sections).sort( (a, b) => a.start_time.localeCompare(b.start_time) );
+const sectionsDataEl = document.getElementById("js-sections-data");
+const sections = JSON.parse(sectionsDataEl.dataset.sections).sort( (a, b) => a.start_time.localeCompare(b.start_time) );
 
 // 関数：現在時刻を取得
 function obtainTheTime() {
@@ -41,7 +42,50 @@ function sleep(waitTimeMilliSeconds) {
 
 
 
+/* -----------    その他の処理    ----------- */
+// ハンバーガーメニューの表示・非表示
+const hamburgerMenuBtnEl = document.getElementById("hamburger-menu-btn");
+const menuContentEl = document.getElementById("menu-content");
+function existLeft(el) { el.style.left = "-400%"; }
+hamburgerMenuBtnEl.addEventListener("click", () => {
+  if (menuContentEl.style.opacity == 0) {
+    menuContentEl.style.left = "10px";
+    menuContentEl.style.opacity = 1;
+  } else {
+    menuContentEl.style.opacity = 0;
+    setTimeout(existLeft, 200, menuContentEl);
+  }
+})
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#menu-content") && e.target !== hamburgerMenuBtnEl) { 
+    menuContentEl.style.opacity = 0;
+    setTimeout(existLeft, 200, menuContentEl); }
+})
+
+
 /* -----------    assets関連    ----------- */
+// 音量スライダーの表示・非表示
+const rootVolumeButtonEl = document.getElementById("root-volume-button");
+const rootVolumeControllerEl = document.getElementById("root-volume-controller");
+function existRight(el) { el.style.right = "-400%"; }
+/// 音量アイコンクリック時、音量スライダーを表示・非表示
+rootVolumeButtonEl.addEventListener("click", () => {
+  if (rootVolumeControllerEl.style.opacity == 0) {
+    rootVolumeControllerEl.style.right = 0;
+    rootVolumeControllerEl.style.opacity = 1;
+  } else {
+    rootVolumeControllerEl.style.opacity = 0;
+    setTimeout(existRight, 200, rootVolumeControllerEl);
+  }
+})
+/// 音量スライダーの要素外をクリック時、音量スライダー要素を非表示
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#root-volume-controller") && e.target !== rootVolumeButtonEl) { 
+    rootVolumeControllerEl.style.opacity = 0;
+    setTimeout(existRight, 200, rootVolumeControllerEl);
+  }
+})
+
 // チャイム設定
 /// 音色
 const chime = new Audio("/assets/Japanese_School_Bell02-01(Slow-Long).mp3");
@@ -150,20 +194,24 @@ document.addEventListener("DOMContentLoaded", function() {
   /* -----------    時計に関する関数    ----------- */
   // 関数：時計を表示
   function displayClock() { 
-    const clockElement = document.getElementById("jsclock");
-    clockElement.textContent = theTime;
+    const clockEl = document.getElementById("js-clock");
+    clockEl.textContent = theTime;
   }
 
   /* -----------    セクション表示に関する関数    ----------- */
   // 関数：セクションを表示
   function displaySection() {
+    const currentsectionNameEl = document.getElementById("js-currentsection-name");
+    const currentsectionStartEndEl = document.getElementById("js-currentsection-start-end");
 
     if (currentSection) {
-      sectionElement.textContent = `name: ${currentSection.name}, start_time: ${currentSection.start_time.substring(0,5)}, end_time: ${currentSection.end_time.substring(0,5)}`;
+      currentsectionNameEl.textContent = `${currentSection.name}`;
+      currentsectionStartEndEl.textContent = `start: ${currentSection.start_time.substring(0,5)} ~ ${currentSection.end_time.substring(0,5)} :end`;
     } else {
       /// 現在時刻がどのセクションにも含まれていない場合、直近で次のセクションを表示
       const nextSection = sections.find( (section) => section.start_time > theTime ) || sections[0];
-      sectionElement.textContent = `name: -, next_start_time: ${nextSection.start_time.substring(0,5)}`;  /// start_timeの時と分だけ取得したいけどいい関数が思いつかないので妥協
+      currentsectionNameEl.textContent = `-`;
+      currentsectionStartEndEl.textContent = `次セクション：${nextSection.start_time.substring(0,5)}`;  /// start_timeの時と分だけ取得したいけどいい関数が思いつかないので妥協
     }
   }
 
