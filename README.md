@@ -24,7 +24,7 @@
 ### MVP
 * トップページ
   * 背景の時間変化
-    * ImageMagick・RMagickによるモザイク加工
+    * ぼかし加工
   * BGMの時間変化
   * 表示(HR、授業中、休み時間、放課後、etc.)の時間変化
 * 概要・使い方
@@ -55,8 +55,6 @@ URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9
   ：ユーザーの"学籍ID"を格納する。主キーや外部キーの名称(xx_id)と区別するためこの名称に。
 * timetablesテーブル
 ：各ユーザーの時間割を管理する。一ユーザーにつき時間割の設定情報は一つのため、users:timetablesは1:1に。
-  * background_mosaic_enabledカラム
-  ：背景ファイルにモザイクをかけるかどうかのフラグを格納する。
 * sectionsテーブル
 ：時間割の各セクション(1時間目, 休み時間, etc.)を管理する。
   * nameカラム
@@ -65,10 +63,13 @@ URL: https://www.figma.com/file/8A9k9dehHPyH2rW1bPY4ph/%22gakkou%22-%E7%94%BB%E9
   ：それぞれセクションの開始時刻と終了時刻を格納する。
   * chime_enabledカラム
   ：そのセクションにおいてチャイムを鳴らすかどうかのフラグを格納する。
-  * backgroundカラム
+  * background_imageカラム
   ：そのセクション時に読み込む画像ファイル(背景用)のパスを格納する。
   * bgmカラム
   ：そのセクション時に読み込む音声ファイル(BGM用)のパスを格納する。
+  * background_image_blur_enabledカラム
+  ：背景画像にぼかしをかけるかどうかのフラグを格納する。
+
 
 ## 技術選定
 ■ 開発環境: Docker

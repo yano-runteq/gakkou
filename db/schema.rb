@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_30_220120) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_09_132707) do
   create_table "sections", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.time "start_time", null: false
@@ -21,11 +21,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_30_220120) do
     t.bigint "timetable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "background_image_blur_enabled", default: false
     t.index ["timetable_id"], name: "index_sections_on_timetable_id"
   end
 
   create_table "timetables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.boolean "background_mosaic_enabled", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

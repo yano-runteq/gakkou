@@ -1,17 +1,52 @@
-<div class=container>
-  <h1>Tops#top</h1>
-  <p id="jsclock">※ここに時計が表示されます。</p>
-  <p id="jscurrentsection" data-sections=<%= @sections.to_json %>>※ここに現在のセクションが表示されます。</p>
+<div class="container">
+  <div class="fixed-top">
+    <div class="left-top" id="left-top">
+      <div class="hamburger-menu">
+        <span class="hamburger-menu-btn" id="hamburger-menu-btn">≡</span>
 
-  <div class="controls">
-    <label for="bgmvolume">bgm_vol</label>
-    <input type="range" name="bgmvolume" id="bgmvolume" min="0.0" max="1.0" value="0.5" step="0.05">
-    <label for="chimevolume">chime_vol</label>
-    <input type="range" name="chimevolume" id="chimevolume" min="0.0" max="1.0" value="0.5" step="0.05">
+        <div class="menu-content" id="menu-content">
+          <ul>
+            <li>
+                <a href="#">メニューリンク1</a>
+            </li>
+            <li>
+                <a href="#">メニューリンク2</a>
+            </li>
+            <li>
+                <a href="#">メニューリンク3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="js-div position-absolute top-50 start-50 translate-middle">
+    <span id="js-sections-data" data-sections=<%= @sections.to_json %>></span>
+    <p class="text-center" id="js-clock">※ここに時計が表示されます。</p>
+    <p class="text-center" id="js-currentsection-name">※ここに現在のセクション名が表示されます。</p>
+    <p class="text-center" id="js-currentsection-start-end">※ここに現在のセクションの開始時刻/終了時刻が表示されます。</p>
+  </div>
+
+  <div class="fixed-bottom">
+    <div class="right-bottom">
+      <i class="fa-lg fa-solid fa-volume-low" id="root-volume-button"></i>
+
+      <div class="root-volume-controller" id="root-volume-controller">
+        <div class="slider-container">
+          <label for="bgmvolume">BGM</label>
+          <input type="range" name="bgmvolume" id="bgmvolume" min="0.0" max="1.0" value="0.5" step="0.01">
+        </div>
+        <div class="slider-container">
+          <label for="chimevolume">CHIME</label>
+          <input type="range" name="chimevolume" id="chimevolume" min="0.0" max="1.0" value="0.5" step="0.01">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <audio id="bgm">
-      Your browser does not support the audio tag.
+    Your browser does not support the audio tag.
   </audio>
 
   <% content_for :js do %>
