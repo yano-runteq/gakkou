@@ -26,6 +26,10 @@
     Your browser does not support the audio tag.
   </audio>
 
+
+  <% content_for :css do %>
+    <%= stylesheet_link_tag "tops" %>
+  <% end %>
   <% content_for :js do %>
     <%= javascript_import_module_tag "top" %>
   <% end %>

@@ -66,24 +66,24 @@ document.addEventListener("click", (e) => {
 
 /* -----------    assets関連    ----------- */
 // 音量スライダーの表示・非表示
-const rootVolumeButtonEl = document.getElementById("rootVolumeButton");
-const rootVolumeControllerEl = document.getElementById("rootVolumeController");
+const volumeButtonEl = document.getElementById("volumeButton");
+const volumeControllerEl = document.getElementById("volumeController");
 function existRight(el) { el.style.right = "-400%"; }
 /// 音量アイコンクリック時、音量スライダーを表示・非表示
-rootVolumeButtonEl.addEventListener("click", () => {
-  if (rootVolumeControllerEl.style.opacity == 0) {
-    rootVolumeControllerEl.style.right = 0;
-    rootVolumeControllerEl.style.opacity = 1;
+volumeButtonEl.addEventListener("click", () => {
+  if (volumeControllerEl.style.opacity == 0) {
+    volumeControllerEl.style.right = 0;
+    volumeControllerEl.style.opacity = 1;
   } else {
-    rootVolumeControllerEl.style.opacity = 0;
-    setTimeout(existRight, 200, rootVolumeControllerEl);
+    volumeControllerEl.style.opacity = 0;
+    setTimeout(existRight, 200, volumeControllerEl);
   }
 })
 /// 音量スライダーの要素外をクリック時、音量スライダー要素を非表示
 document.addEventListener("click", (e) => {
-  if (!e.target.closest("#rootVolumeController") && e.target !== rootVolumeButtonEl) { 
-    rootVolumeControllerEl.style.opacity = 0;
-    setTimeout(existRight, 200, rootVolumeControllerEl);
+  if (!e.target.closest("#volumeController") && e.target !== volumeButtonEl) { 
+    volumeControllerEl.style.opacity = 0;
+    setTimeout(existRight, 200, volumeControllerEl);
   }
 })
 
