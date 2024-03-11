@@ -36,7 +36,6 @@ body {
         top: 10px;
         left: -400%;
         padding-right: 20px;
-        z-index: 100;
         border-radius: 4px;
         background-color: rgba(245,245,245,0.7);
         opacity: 0;
@@ -50,6 +49,13 @@ body {
             transition: color 0.2s 0s linear;
           }
           a:hover {
+            color: #7d8bf0;
+          }
+          button {
+            color: #808080;
+            transition: color 0.2s 0s linear;
+          }
+          button:hover {
             color: #7d8bf0;
           }
         }
@@ -68,15 +74,15 @@ body {
     line-height: 60px;
   }
 
-  #js-clock {
+  #jsClock {
     font-size: 60px;
   }
 
-  #js-currentsection-name {
+  #jsCurrentsectionName {
     font-size: 48px;
   }
 
-  #js-currentsection-start-end {
+  #jsCurrentsectionStartEnd {
     font-size: 16px;
     line-height: 12px;
   }
@@ -88,7 +94,7 @@ body {
     right: 28px;
     bottom: 30px;
 
-    #root-volume-button {
+    #rootVolumeButton {
       cursor: pointer;
       position: fixed;
       right: 28px;
@@ -99,11 +105,11 @@ body {
         #fff -1px 0 0, #fff 1px 0 0;
       transition: color 0.2s 0s linear;
     }
-    #root-volume-button:hover {
+    #rootVolumeButton:hover {
       color: #454545;
     }
 
-    #root-volume-controller {
+    #rootVolumeController {
       position: relative;
       background-color: rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(0, 0, 0, 0.7);

@@ -2,18 +2,18 @@
   <div class="fixed-top">
     <div class="left-top" id="left-top">
       <div class="hamburger-menu">
-        <span class="hamburger-menu-btn" id="hamburger-menu-btn">≡</span>
+        <span class="hamburger-menu-btn" id="hamburgerMenuBtn">≡</span>
 
-        <div class="menu-content" id="menu-content">
+        <div class="menu-content" id="menuContent">
           <ul>
             <li>
-                <a href="#">メニューリンク1</a>
+              <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#aboutModal">about</button>
             </li>
             <li>
-                <a href="#">メニューリンク2</a>
+              <a href="#">メニューリンク2</a>
             </li>
             <li>
-                <a href="#">メニューリンク3</a>
+              <a href="#">メニューリンク3</a>
             </li>
           </ul>
         </div>
@@ -21,25 +21,44 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">about</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+
   <div class="js-div position-absolute top-50 start-50 translate-middle">
-    <span id="js-sections-data" data-sections=<%= @sections.to_json %>></span>
-    <p class="text-center" id="js-clock">※ここに時計が表示されます。</p>
-    <p class="text-center" id="js-currentsection-name">※ここに現在のセクション名が表示されます。</p>
-    <p class="text-center" id="js-currentsection-start-end">※ここに現在のセクションの開始時刻/終了時刻が表示されます。</p>
+    <span id="jsSectionsData" data-sections=<%= @sections.to_json %>></span>
+    <p class="text-center" id="jsClock">※ここに時計が表示されます。</p>
+    <p class="text-center" id="jsCurrentsectionName">※ここに現在のセクション名が表示されます。</p>
+    <p class="text-center" id="jsCurrentsectionStartEnd">※ここに現在のセクションの開始時刻/終了時刻が表示されます。</p>
   </div>
 
   <div class="fixed-bottom">
     <div class="right-bottom">
-      <i class="fa-lg fa-solid fa-volume-low" id="root-volume-button"></i>
+      <i class="fa-lg fa-solid fa-volume-low" id="rootVolumeButton"></i>
 
-      <div class="root-volume-controller" id="root-volume-controller">
+      <div class="root-volume-controller" id="rootVolumeController">
         <div class="slider-container">
           <label for="bgmvolume">BGM</label>
-          <input type="range" name="bgmvolume" id="bgmvolume" min="0.0" max="1.0" value="0.5" step="0.01">
+          <input type="range" name="bgmvolume" id="bgmVolume" min="0.0" max="1.0" value="0.5" step="0.01">
         </div>
         <div class="slider-container">
           <label for="chimevolume">CHIME</label>
-          <input type="range" name="chimevolume" id="chimevolume" min="0.0" max="1.0" value="0.5" step="0.01">
+          <input type="range" name="chimevolume" id="chimeVolume" min="0.0" max="1.0" value="0.5" step="0.01">
         </div>
       </div>
     </div>

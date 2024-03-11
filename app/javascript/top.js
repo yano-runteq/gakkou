@@ -13,7 +13,7 @@
 
 /* -----------    汎用変数/汎用関数    ----------- */
 // 適用中のtimetableのsections（開始時刻順）
-const sectionsDataEl = document.getElementById("js-sections-data");
+const sectionsDataEl = document.getElementById("jsSectionsData");
 const sections = JSON.parse(sectionsDataEl.dataset.sections).sort( (a, b) => a.start_time.localeCompare(b.start_time) );
 
 // 関数：現在時刻を取得
@@ -44,8 +44,8 @@ function sleep(waitTimeMilliSeconds) {
 
 /* -----------    その他の処理    ----------- */
 // ハンバーガーメニューの表示・非表示
-const hamburgerMenuBtnEl = document.getElementById("hamburger-menu-btn");
-const menuContentEl = document.getElementById("menu-content");
+const hamburgerMenuBtnEl = document.getElementById("hamburgerMenuBtn");
+const menuContentEl = document.getElementById("menuContent");
 function existLeft(el) { el.style.left = "-400%"; }
 hamburgerMenuBtnEl.addEventListener("click", () => {
   if (menuContentEl.style.opacity == 0) {
@@ -57,16 +57,17 @@ hamburgerMenuBtnEl.addEventListener("click", () => {
   }
 })
 document.addEventListener("click", (e) => {
-  if (!e.target.closest("#menu-content") && e.target !== hamburgerMenuBtnEl) { 
+  if (!e.target.closest("#menuContent") && e.target !== hamburgerMenuBtnEl) { 
     menuContentEl.style.opacity = 0;
     setTimeout(existLeft, 200, menuContentEl); }
 })
 
 
+
 /* -----------    assets関連    ----------- */
 // 音量スライダーの表示・非表示
-const rootVolumeButtonEl = document.getElementById("root-volume-button");
-const rootVolumeControllerEl = document.getElementById("root-volume-controller");
+const rootVolumeButtonEl = document.getElementById("rootVolumeButton");
+const rootVolumeControllerEl = document.getElementById("rootVolumeController");
 function existRight(el) { el.style.right = "-400%"; }
 /// 音量アイコンクリック時、音量スライダーを表示・非表示
 rootVolumeButtonEl.addEventListener("click", () => {
@@ -80,7 +81,7 @@ rootVolumeButtonEl.addEventListener("click", () => {
 })
 /// 音量スライダーの要素外をクリック時、音量スライダー要素を非表示
 document.addEventListener("click", (e) => {
-  if (!e.target.closest("#root-volume-controller") && e.target !== rootVolumeButtonEl) { 
+  if (!e.target.closest("#rootVolumeController") && e.target !== rootVolumeButtonEl) { 
     rootVolumeControllerEl.style.opacity = 0;
     setTimeout(existRight, 200, rootVolumeControllerEl);
   }
@@ -90,7 +91,7 @@ document.addEventListener("click", (e) => {
 /// 音色
 const chime = new Audio("/assets/Japanese_School_Bell02-01(Slow-Long).mp3");
 /// 初期音量
-const inputChimeVolume = document.getElementById("chimevolume");
+const inputChimeVolume = document.getElementById("chimeVolume");
 const defaultChimeVolume = inputChimeVolume.value;
 chime.volume = defaultChimeVolume;
 /// 音量スライダー
@@ -111,7 +112,7 @@ function setCurrentBgm() {
 }
 let bgm = setCurrentBgm();
 /// 初期音量
-const inputBgmVolume = document.getElementById("bgmvolume");
+const inputBgmVolume = document.getElementById("bgmVolume");
 const defaultBgmVolume = inputBgmVolume.value;
 bgm.volume = defaultBgmVolume;
 /// 音量スライダー
@@ -175,34 +176,21 @@ function startLoopBgm() {
     clearTimeout(loopPlayTimer);
   }
 
-/*
-// クリック時(音量確認に返答後)、BGMを鳴らす
-document.addEventListener("DOMContentLoaded", function() {
-  document.addEventListener("click", function() {
-    if (checkClicked) { return; }
-    if (bgm.paused) {
-      playBgm();
-      checkClicked = ture;
-    }
-  });
-});
-*/
-
 
 
 /* -----------    everySecondに関する関数群    ----------- */
   /* -----------    時計に関する関数    ----------- */
   // 関数：時計を表示
   function displayClock() { 
-    const clockEl = document.getElementById("js-clock");
+    const clockEl = document.getElementById("jsClock");
     clockEl.textContent = theTime;
   }
 
   /* -----------    セクション表示に関する関数    ----------- */
   // 関数：セクションを表示
   function displaySection() {
-    const currentsectionNameEl = document.getElementById("js-currentsection-name");
-    const currentsectionStartEndEl = document.getElementById("js-currentsection-start-end");
+    const currentsectionNameEl = document.getElementById("jsCurrentsectionName");
+    const currentsectionStartEndEl = document.getElementById("jsCurrentsectionStartEnd");
 
     if (currentSection) {
       currentsectionNameEl.textContent = `${currentSection.name}`;
@@ -338,5 +326,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* -----------    start-upの処理を実行    ----------- */
+
 everySecond();
-startLoopBgm();
+let checkClicked;
+document.addEventListener("click", function() {
+  if (checkClicked) { return; }
+  startLoopBgm();
+  checkClicked = true;
+});
