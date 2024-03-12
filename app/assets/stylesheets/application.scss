@@ -43,7 +43,7 @@ body {
 
         li {
           list-style: none;
-          line-height: 80px;
+          line-height: 60px;
           a {
             color: #808080;
             transition: color 0.2s 0s linear;
@@ -93,44 +93,5 @@ body {
     position: absolute;
     right: 28px;
     bottom: 30px;
-
-    #rootVolumeButton {
-      cursor: pointer;
-      position: fixed;
-      right: 28px;
-      bottom: 30px;
-      color: #696969;
-      text-shadow: #fff 1px 1px 0, #fff -1px -1px 0, #fff -1px 1px 0,
-        #fff 1px -1px 0, #fff 0px 1px 0, #fff 0 -1px 0,
-        #fff -1px 0 0, #fff 1px 0 0;
-      transition: color 0.2s 0s linear;
-    }
-    #rootVolumeButton:hover {
-      color: #454545;
-    }
-
-    #rootVolumeController {
-      position: relative;
-      background-color: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(0, 0, 0, 0.7);
-      border-radius: 4px;
-      padding: 5px;
-      right: -400%;
-      bottom: 20px;
-      opacity: 0;
-      transition: opacity 0.2s 0s linear;
-
-      .slider-container {
-        display: flex;
-        align-items: center;
-        label {
-        width: 60px;
-        }
-        input[type="range"] {
-        margin-left: 10px;
-        cursor: pointer;
-        }
-      }
-    }
   }
 }

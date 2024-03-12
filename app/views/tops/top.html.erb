@@ -1,53 +1,12 @@
 <div class="container">
   <div class="fixed-top">
     <div class="left-top" id="left-top">
-      <div class="hamburger-menu">
-        <span class="hamburger-menu-btn" id="hamburgerMenuBtn">≡</span>
-
-        <div class="menu-content" id="menuContent">
-          <ul>
-            <li>
-              <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#aboutModal">概要・使い方</button>
-            </li>
-            <li>
-              <a href="#">メニューリンク2</a>
-            </li>
-            <li>
-              <a href="#">メニューリンク3</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <%= render "shared/hamburger_menu" %>
     </div>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">概要・使い方</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <br>
-            <li>"gakkou"は、日本の学校の空気感、<br>その再現・表現を目的としたアプリです。</li>
-            <br>
-            <li>基本的に操作は不要です。</li>
-            <br>
-            <li>定刻になるとチャイムが鳴ります。</li>
-            <br>
-            <li>学籍登録(後日実装予定)を行うと、<br>表示されるセクション名やチャイムのなる時刻を編集できるようになります。</li>
-            <br>
-            <p class="text-end" style="font-size:12px; opacity:0.5;">チャイム音提供: OtoLogic(https://otologic.jp)</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "shared/about_modal" %>
   <!-- Modal -->
 
   <div class="js-div position-absolute top-50 start-50 translate-middle">
@@ -59,18 +18,7 @@
 
   <div class="fixed-bottom">
     <div class="right-bottom">
-      <i class="fa-lg fa-solid fa-volume-low" id="rootVolumeButton"></i>
-
-      <div class="root-volume-controller" id="rootVolumeController">
-        <div class="slider-container">
-          <label for="bgmvolume">BGM</label>
-          <input type="range" name="bgmvolume" id="bgmVolume" min="0.0" max="1.0" value="0.5" step="0.01">
-        </div>
-        <div class="slider-container">
-          <label for="chimevolume">CHIME</label>
-          <input type="range" name="chimevolume" id="chimeVolume" min="0.0" max="1.0" value="0.5" step="0.01">
-        </div>
-      </div>
+      <%= render "volume_controller" %>
     </div>
   </div>
 
@@ -78,6 +26,10 @@
     Your browser does not support the audio tag.
   </audio>
 
+
+  <% content_for :css do %>
+    <%= stylesheet_link_tag "tops" %>
+  <% end %>
   <% content_for :js do %>
     <%= javascript_import_module_tag "top" %>
   <% end %>
