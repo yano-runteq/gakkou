@@ -3,6 +3,11 @@
 
   <div class="menu-content" id="menuContent">
     <ul>
+      <% if request.path != root_path %>
+        <li>
+          <%= link_to "トップページへ", root_path, data: {turbolinks: false} %>
+        </li>
+      <% end %>
       <li>
         <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#aboutModal">概要・使い方</button>
       </li>
@@ -13,7 +18,7 @@
         <a href="#">プライバシーポリシー</a>
       </li>
       <li>
-        <a href="#">お問い合わせ</a>
+        <%= link_to "お問い合わせ", new_contact_path, data: {turbolinks: false} %>
       </li>
     </ul>
   </div>

@@ -52,6 +52,8 @@ body {
             color: #7d8bf0;
           }
           button {
+            padding-left: 0;
+            padding-right: 0;
             color: #808080;
             transition: color 0.2s 0s linear;
           }
@@ -94,4 +96,9 @@ body {
     right: 28px;
     bottom: 30px;
   }
+}
+
+#chimeCredit {
+  font-size:12px;
+  opacity:0.5;
 }

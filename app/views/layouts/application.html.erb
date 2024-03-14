@@ -16,6 +16,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="fixed-top">
+        <div class="left-top" id="left-top">
+          <%= render "shared/hamburger_menu" %>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <%= render "shared/about_modal" %>
+      <!-- Modal -->
+
+      <%= yield %>
+    </div>
   </body>
 </html>

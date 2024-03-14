@@ -1,2 +1,36 @@
-<h1>Contact#new</h1>
-<p>Find me in app/views/contact/new.html.erb</p>
+<div class="mx-auto">
+  <h1 class="text-center p-5">お問い合わせフォーム</h1>
+  <div class="mx-auto" id="contactEntrance">
+    <div class=" mb-5">
+      <p>当サイトについて不具合・要望・質問などありましたらこちらで受け付けいたします。
+      <p>下記の項目を入力のうえ、確認ボタンをクリックしてください。</p>
+    </div>
+    <div class="mx-auto">
+      <%= form_with model: @contact, url: check_contacts_path, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="mb-4">
+          <%= f.label :name, "お名前", class: "mb-2" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :email, "メールアドレス", class: "mb-2" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :content, "お問い合わせ内容", class: "mb-2" %>
+          <%= f.text_area :content, rows: 3, class: "form-control" %>
+        </div>
+        <div class="text-center mb-4">
+          <%= f.submit "確認", class: "btn btn-outline-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "contact" %>
+<% end %>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "contact" %>
+<% end %>
