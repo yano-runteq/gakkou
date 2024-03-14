@@ -42,28 +42,6 @@ function sleep(waitTimeMilliSeconds) {
 
 
 
-/* -----------    その他の処理    ----------- */
-// ハンバーガーメニューの表示・非表示
-const hamburgerMenuBtnEl = document.getElementById("hamburgerMenuBtn");
-const menuContentEl = document.getElementById("menuContent");
-function existLeft(el) { el.style.left = "-400%"; }
-hamburgerMenuBtnEl.addEventListener("click", () => {
-  if (menuContentEl.style.opacity == 0) {
-    menuContentEl.style.left = "10px";
-    menuContentEl.style.opacity = 1;
-  } else {
-    menuContentEl.style.opacity = 0;
-    setTimeout(existLeft, 200, menuContentEl);
-  }
-})
-document.addEventListener("click", (e) => {
-  if (!e.target.closest("#menuContent") && e.target !== hamburgerMenuBtnEl) { 
-    menuContentEl.style.opacity = 0;
-    setTimeout(existLeft, 200, menuContentEl); }
-})
-
-
-
 /* -----------    assets関連    ----------- */
 // 音量スライダーの表示・非表示
 const volumeButtonEl = document.getElementById("volumeButton");

@@ -1,36 +1,23 @@
-<div class="container">
-  <div class="fixed-top">
-    <div class="left-top" id="left-top">
-      <%= render "shared/hamburger_menu" %>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <%= render "shared/about_modal" %>
-  <!-- Modal -->
-
-  <div class="js-div position-absolute top-50 start-50 translate-middle">
-    <span id="jsSectionsData" data-sections=<%= @sections.to_json %>></span>
-    <p class="text-center" id="jsClock"></p>
-    <p class="text-center" id="jsCurrentsectionName"></p>
-    <p class="text-center" id="jsCurrentsectionStartEnd"></p>
-  </div>
-
-  <div class="fixed-bottom">
-    <div class="right-bottom">
-      <%= render "volume_controller" %>
-    </div>
-  </div>
-
-  <audio id="bgm">
-    Your browser does not support the audio tag.
-  </audio>
-
-
-  <% content_for :css do %>
-    <%= stylesheet_link_tag "tops" %>
-  <% end %>
-  <% content_for :js do %>
-    <%= javascript_import_module_tag "top" %>
-  <% end %>
+<div class="js-div position-absolute top-50 start-50 translate-middle">
+  <span id="jsSectionsData" data-sections=<%= @sections.to_json %>></span>
+  <p class="text-center" id="jsClock"></p>
+  <p class="text-center" id="jsCurrentsectionName"></p>
+  <p class="text-center" id="jsCurrentsectionStartEnd"></p>
 </div>
+
+<div class="fixed-bottom">
+  <div class="right-bottom">
+    <%= render "volume_controller" %>
+  </div>
+</div>
+
+<audio id="bgm">
+  Your browser does not support the audio tag.
+</audio>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "top" %>
+<% end %>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "top" %>
+<% end %>
