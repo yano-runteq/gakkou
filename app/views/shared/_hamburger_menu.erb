@@ -5,7 +5,7 @@
     <ul>
       <% if request.path != root_path %>
         <li>
-          <%= link_to "トップページへ", root_path, data: {turbolinks: false} %>
+          <%= link_to "トップページへ", root_path %>
         </li>
       <% end %>
       <li>
@@ -18,7 +18,7 @@
         <a href="#">プライバシーポリシー</a>
       </li>
       <li>
-        <%= link_to "お問い合わせ", new_contact_path, data: {turbolinks: false} %>
+        <%= link_to "お問い合わせ", new_contact_path %>
       </li>
     </ul>
   </div>
