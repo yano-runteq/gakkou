@@ -33,3 +33,6 @@
 # Ignore docker-compose
 /docker-compose.yml
 /config/database.yml
+
+# Ignore environmental variables
+/.env

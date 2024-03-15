@@ -1,2 +1,19 @@
-<h1>Contact#completed</h1>
-<p>Find me in app/views/contact/completed.html.erb</p>
+<div class="mx-auto">
+  <h1 class="text-center p-5">お問い合わせ内容確認</h1>
+  <div class="contact-explanation mx-auto position-absolute top-50 start-50 translate-middle">
+    <br>
+    <p>お問い合わせが完了いたしました。</p>
+    <p>返信には1日~数日かかる場合があります。</p>
+    <p>ご了承ください。</p>
+    <div class="text-center">
+      <%= link_to "トップページに戻る", root_path %>
+    </div>
+  </div>
+</div>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "contact" %>
+<% end %>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "contact" %>
+<% end %>

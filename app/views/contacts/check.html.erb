@@ -1,2 +1,45 @@
-<h1>Contact#check</h1>
-<p>Find me in app/views/contact/check.html.erb</p>
+<div class="mx-auto">
+  <h1 class="text-center p-5">お問い合わせ内容確認</h1>
+  <div class="contact-explanation mx-auto">
+    <div class="mb-5">
+      <p>下記の内容でお問い合わせを受け付けいたします。</p>
+      <p>入力内容に訂正がございませんか？&emsp;よろしければ送信ボタンをクリックしてください。</p>
+    </div>
+    <div class="mx-auto">
+      <div class="mb-4">
+        <p class="mb-2">お名前</p>
+        <div class="form-control"><%= @contact.name %></div>
+      </div>
+      <div class="mb-4">
+        <p class="mb-2">メールアドレス</p>
+        <div class="form-control"><%= @contact.email %></div>
+      </div>
+      <div class="mb-4">
+        <p class="mb-2">お問い合わせ内容</p>
+        <div class="form-control"><%= simple_format(h(@contact.content)) %></div>
+      </div>
+
+      <div class="w-50 mx-auto mt-5">
+        <%= form_with model: @contact do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :content %>
+          <%= f.submit "送信", class: "btn btn-outline-primary btn-sm mb-4 float-start" %>
+        <% end %>
+        <%= form_with model: @contact, url: back_contacts_path do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :content %>
+          <%= f.submit "訂正", class: "btn btn-outline-secondary btn-sm mb-4 float-end" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "contact" %>
+<% end %>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "contact" %>
+<% end %>
