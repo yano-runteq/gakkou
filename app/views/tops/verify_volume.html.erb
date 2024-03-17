@@ -1,0 +1,23 @@
+<div class="text-center position-absolute top-50 start-50 translate-middle">
+  <h1>音量確認</h1>
+  <div class="m-5">
+    <p>このサイトでは音声(BGM)が流れます。</p>
+    <p>よろしいですか？</p>
+    <p>（BGMをOFFにしてもチャイムは再生されます）
+    <br>
+    <div class="mx-auto d-inline">
+      <div class="sound-on m-4 float-start">
+        <a class="fa-3x fa-solid fa-volume-high mb-3" id="verifyYesButton" href=<%= verify_yes_path %>></a>
+        <p>BGMをONにする</p>
+      </div>
+      <div class="sound-off m-4 float-end d-inline">
+        <a class="fa-3x fa-solid fa-volume-xmark mb-3" id="verifyNoButton" href=<%= verify_no_path %>></a>
+        <p>BGMをOFFにする</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "verify" %>
+<% end %>
