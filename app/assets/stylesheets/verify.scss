@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(245, 245, 245);
+  opacity: 0.8;
+}
+
+#verifyYesButton {
+  text-decoration: none;
+  cursor: pointer;
+  color: #696969;
+  text-shadow: #fff 1px 1px 0, #fff -1px -1px 0, #fff -1px 1px 0,
+    #fff 1px -1px 0, #fff 0px 1px 0, #fff 0 -1px 0,
+    #fff -1px 0 0, #fff 1px 0 0,
+    #333 1.5px 1.5px 0, #333 -1.5px -1.5px 0, #333 -1.5px 1.5px 0,
+    #333 1.5px -1.5px 0, #333 0px 1.5px 0, #333 0 -1.5px 0,
+    #333 -1.5px 0 0, #333 1.5px 0 0,;
+  transition: color 0.2s 0s linear;
+}
+#verifyYesButton:hover {
+  color: #9f9dfe;
+}
+#verifyNoButton {
+  text-decoration: none;
+  cursor: pointer;
+  color: #696969;
+  text-shadow: #fff 1px 1px 0, #fff -1px -1px 0, #fff -1px 1px 0,
+    #fff 1px -1px 0, #fff 0px 1px 0, #fff 0 -1px 0,
+    #fff -1px 0 0, #fff 1px 0 0,
+    #333 1.5px 1.5px 0, #333 -1.5px -1.5px 0, #333 -1.5px 1.5px 0,
+    #333 1.5px -1.5px 0, #333 0px 1.5px 0, #333 0 -1.5px 0,
+    #333 -1.5px 0 0, #333 1.5px 0 0,;
+  transition: color 0.2s 0s linear;
+}
+#verifyNoButton:hover {
+  color: #c7c7c7;
+}

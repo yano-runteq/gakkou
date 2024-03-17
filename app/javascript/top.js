@@ -75,6 +75,7 @@ chime.volume = defaultChimeVolume;
 /// 音量スライダー
 inputChimeVolume.addEventListener("input", (e) => {
   chime.volume = e.currentTarget.value;
+  document.cookie = `chime_volume_value=${e.currentTarget.value}`;
 });
 
 // BGM
@@ -99,6 +100,7 @@ let latestBgmVolume;
 inputBgmVolume.addEventListener("input", (e) => {
   if (temporaryEnabled) {return;}  /// フェードイン・アウト中は音量スライダーを無効
   bgm.volume = e.currentTarget.value;
+  document.cookie = `bgm_volume_value=${e.currentTarget.value}`;
   latestBgmVolume = bgm.volume;
 });
 
@@ -121,6 +123,7 @@ displayCurrentBackgroundImage();
 
 /* -----------    start-up関数群    ----------- */
 // 関数：特定の処理を毎秒実行
+let checkLoopBgmStarted
 function everySecond() {
   theTime = obtainTheTime();
   currentSection = obtainCurrentSection();
@@ -129,8 +132,19 @@ function everySecond() {
   displaySection();
   checkSectionUpdated();
 
+  /// ブラウザバック時にBGMが自動再生されない問題への対策-1
+  if (!checkLoopBgmStarted) {
+    startLoopBgm();
+    checkLoopBgmStarted = true;
+  }
+
   setTimeout(everySecond, 1000);
 }
+/// ブラウザバック時にBGMが自動再生されない問題への対策-2
+window.addEventListener("beforeunload", function() {
+  stopLoopBgm();
+  checkLoopBgmStarted = false;
+});
 
 // 関数：BGMを開始
 function startLoopBgm() {
@@ -304,11 +318,4 @@ function startLoopBgm() {
 
 
 /* -----------    start-upの処理を実行    ----------- */
-
 everySecond();
-let checkClicked;
-document.addEventListener("click", function() {
-  if (checkClicked) { return; }
-  startLoopBgm();
-  checkClicked = true;
-});

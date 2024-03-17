@@ -7,7 +7,7 @@
 
 <div class="fixed-bottom">
   <div class="right-bottom">
-    <%= render "volume_controller" %>
+    <%= render "volume_controller", { bgm_volume_value: @default_bgm_volume_value, chime_volume_value: @default_chime_volume_value} %>
   </div>
 </div>
 
