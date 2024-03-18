@@ -106,16 +106,16 @@ inputBgmVolume.addEventListener("input", (e) => {
 
 // 背景画像
 /// 背景要素
-const body = document.querySelector("body");
+const backGroundImageEl = document.getElementById("backGroundImage");
 /// 初期背景画像(を表示)
 function displayCurrentBackgroundImage() {
   let currentBackgroundImagePath;
   if (currentSection) {
-    currentBackgroundImagePath = (currentSection.background_image) ? `/assets/${currentSection.background_image}` : "/assets/1518375S.jpg";
+    currentBackgroundImagePath = (currentSection.background_image) ? `/assets/${currentSection.background_image}` : "/assets/bgi_secondsection.jpg";
   } else {
-    currentBackgroundImagePath = "/assets/1518375S.jpg";
+    currentBackgroundImagePath = "/assets/bgi_secondsection.jpg";
   }
-  body.style.backgroundImage = "url(" + currentBackgroundImagePath + ")";
+  backGroundImageEl.src = currentBackgroundImagePath;
 }
 displayCurrentBackgroundImage();
 
@@ -267,17 +267,16 @@ function startLoopBgm() {
 
     // 関数：（必要な場合）背景画像を変更
     function changeBackgroundImage() {
-      const oldBackgroundImage = body.style.backgroundImage;  /// => url("assets/~~~.jpg")
+      const oldBackgroundImage = backGroundImageEl.src;
       let newBackgroundImagePath;
       if (currentSection) {
-        newBackgroundImagePath = (currentSection.background_image) ? `/assets/${currentSection.background_image}` : "/assets/1518375S.jpg";
+        newBackgroundImagePath = (currentSection.background_image) ? `/assets/${currentSection.background_image}` : "/assets/bgi_secondsection.jpg";
       } else {
-        newBackgroundImagePath = "/assets/1518375S.jpg";
+        newBackgroundImagePath = "/assets/bgi_secondsection.jpg";
       }
-      const newBackgroundImage = "url("+ newBackgroundImagePath +")";  /// => url(assets/~~~.jpg)
 
-      if (newBackgroundImage!=oldBackgroundImage) {
-        body.style.backgroundImage = newBackgroundImage;
+      if (newBackgroundImagePath!=oldBackgroundImage) {
+        backGroundImageEl.src = newBackgroundImagePath;
       }
     }
 
